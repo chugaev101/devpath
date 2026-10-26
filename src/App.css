@@ -1,0 +1,38 @@
+:root {
+  --border: #e5e4e7;
+}
+
+.main-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  place-content: center;
+  place-items: center;
+  padding: 32px 20px 24px;
+}
+
+.areas {
+  position: relative;
+  padding: 20px 0;
+}
+
+.areas::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 85%;
+  height: 1px;
+  background-color: var(--border);
+}
+
+.areas__title {
+  text-align: left;
+  padding-left: 40px;
+}
