@@ -2,6 +2,23 @@ import Welcome from "./components/Welcome"
 import LearningDirection from "./components/LearningDirection"
 import "./App.css"
 
+const learningDirections = [
+  {
+    id: "1",
+    name: "Java Backend",
+    desc: "изучение Java и&nbsp;Spring Boot для разработки серверных приложений.",
+  },
+  {
+    id: "2",
+    name: "React + TypeScript",
+    desc: "создание интерфейсов на&nbsp;React с&nbsp;типизацией TypeScript.",
+  },
+  {
+    id: "3",
+    name: "PostgreSQL",
+    desc: "изучение PostgreSQL для хранения данных, написания SQL-запросов и проектирования баз данных.",
+  },
+]
 
 function App() {
   return (
@@ -19,14 +36,13 @@ function App() {
       <section className="areas">
         <h2 className="areas__title">Мои направления</h2>
         <ul className="areas__list">
-          <LearningDirection
-            name="Java Backend"
-            desc="изучение Java и&nbsp;Spring Boot для разработки серверных приложений."
-          />
-          <LearningDirection
-            name="React + TypeScript"
-            desc="создание интерфейсов на&nbsp;React с&nbsp;типизацией TypeScript."
-          />
+          {learningDirections.map(({ id, name, desc }) =>
+            <LearningDirection
+              key={id}
+              name={name}
+              desc={desc}
+            />
+          )}
         </ul>
       </section>
     </div>
