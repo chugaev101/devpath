@@ -6,12 +6,12 @@ const learningDirections = [
   {
     id: "1",
     name: "Java Backend",
-    desc: "изучение Java и&nbsp;Spring Boot для разработки серверных приложений.",
+    desc: "изучение Java и Spring Boot для разработки серверных приложений.",
   },
   {
     id: "2",
     name: "React + TypeScript",
-    desc: "создание интерфейсов на&nbsp;React с&nbsp;типизацией TypeScript.",
+    desc: "создание интерфейсов на React с типизацией TypeScript.",
   },
   {
     id: "3",
