@@ -31,8 +31,15 @@ type LearningDirection = {
 function App() {
   const [directions, setDirections] = useState<LearningDirection[]>(learningDirections);
 
-  const handleAddDirection = (direction: LearningDirection) => {
-    setDirections((prevDirections) => [...prevDirections, direction]);
+  const handleAddDirection = (name: string, desc: string) => {
+    setDirections((prevDirections) => [
+      ...prevDirections,
+      {
+        id: crypto.randomUUID(),
+        name,
+        desc,
+      }
+    ]);
   }
 
   return (

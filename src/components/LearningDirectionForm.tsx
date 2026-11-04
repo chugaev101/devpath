@@ -1,13 +1,7 @@
 import { useState, type ChangeEvent, type SubmitEvent } from "react"
 
-type LearningDirection = {
-  id: string;
-  name: string;
-  desc: string;
-}
-
 type DirectionFormProps = {
-  onAddDirection: (direction: LearningDirection) => void;
+  onAddDirection: (name: string, desc: string) => void;
 }
 
 function LearningDirectionForm({ onAddDirection }: DirectionFormProps) {
@@ -26,11 +20,7 @@ function LearningDirectionForm({ onAddDirection }: DirectionFormProps) {
     e.preventDefault();
 
     if (directionName.trim() && directionDesc.trim()) {
-      onAddDirection({
-        id: crypto.randomUUID(),
-        name: directionName,
-        desc: directionDesc
-      });
+      onAddDirection(directionName, directionDesc);
 
       setDirectionName("");
       setDirectionDesc("");
