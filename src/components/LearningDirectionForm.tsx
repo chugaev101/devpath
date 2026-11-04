@@ -20,7 +20,7 @@ function LearningDirectionForm({ onAddDirection }: DirectionFormProps) {
     e.preventDefault();
 
     if (directionName.trim() && directionDesc.trim()) {
-      onAddDirection(directionName, directionDesc);
+      onAddDirection(directionName.trim(), directionDesc.trim());
 
       setDirectionName("");
       setDirectionDesc("");
