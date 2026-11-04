@@ -1,6 +1,7 @@
-import { useState, type ChangeEvent, type SubmitEvent } from "react"
+import { useState } from "react"
 import Welcome from "./components/Welcome"
 import LearningDirection from "./components/LearningDirection"
+import LearningDirectionForm from "./components/LearningDirectionForm"
 import "./App.css"
 
 const learningDirections = [
@@ -29,33 +30,9 @@ type LearningDirection = {
 
 function App() {
   const [directions, setDirections] = useState<LearningDirection[]>(learningDirections);
-  const [directionName, setDirectionName] = useState<string>("");
-  const [directionDesc, setDirectionDesc] = useState<string>("");
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    if (e.target.name === "direction-name") {
-      setDirectionName(e.target.value);
-    } else if (e.target.name === "direction-desc") {
-      setDirectionDesc(e.target.value);
-    }
-  }
-
-  const handleSubmit = (e: SubmitEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    if (directionName.trim() && directionDesc.trim()) {
-      setDirections((prevDirections) => [
-        ...prevDirections,
-        {
-          id: crypto.randomUUID(),
-          name: directionName,
-          desc: directionDesc,
-        }
-      ]);
-
-      setDirectionName("");
-      setDirectionDesc("");
-    }
+  const handleAddDirection = (direction: LearningDirection) => {
+    setDirections((prevDirections) => [...prevDirections, direction]);
   }
 
   return (
@@ -70,19 +47,12 @@ function App() {
         </div>
       </section>
 
+      <LearningDirectionForm
+        onAddDirection={handleAddDirection}
+      />
+
       <section className="areas">
         <h2 className="areas__title">Мои направления</h2>
-        <form className="areas__add-direction add-direction" onSubmit={handleSubmit}>
-          <label className="add-direction__label">
-            <span className="add-direction__title">название направления</span>
-            <input className="add-direction__name" name="direction-name" type="text" value={directionName} onChange={handleChange} />
-          </label>
-          <label className="add-direction__label">
-            <span className="add-direction__title">описание направления</span>
-            <textarea className="add-direction__desc" name="direction-desc" value={directionDesc} onChange={handleChange}></textarea>
-          </label>
-          <button className="add-direction__submit" type="submit">Добавить</button>
-        </form>
         <ul className="areas__list">
           {directions.map(({ id, name, desc }) =>
             <LearningDirection
